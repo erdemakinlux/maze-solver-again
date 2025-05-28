@@ -17,6 +17,8 @@ class Cell:
         self.__x2 = x2
         self.__y1 = y1
         self.__y2 = y2
+        self.center_x = (self.__x2 + self.__x1)/2
+        self.center_y = (self.__y2 + self.__y1)/2
         if self.has_left_wall:
             line = Line(Point(x1,y1),Point(x1,y2))
             self.__win.draw_line(line)
@@ -29,3 +31,11 @@ class Cell:
         if self.has_bottom_wall:
             line = Line(Point(x1,y2),Point(x2,y2))
             self.__win.draw_line(line)
+    
+    def draw_move(self, to_cell, undo=False):
+        if undo:
+            line = Line(Point(self.center_x,self.center_y),Point(to_cell.center_x,to_cell.center_y))
+            self.__win.draw_line(line,"gray")
+        else:
+            line = Line(Point(self.center_x,self.center_y),Point(to_cell.center_x,to_cell.center_y))
+            self.__win.draw_line(line,"red")
