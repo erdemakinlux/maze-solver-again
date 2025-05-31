@@ -29,7 +29,8 @@ class Tests(unittest.TestCase):
             len(m1._Maze__cells[0]),
             num_rows,
         )
-
+    def __break_entrance_and_exit():
+        pass
 
 if __name__ == "__main__":
     unittest.main()
